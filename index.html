@@ -41,6 +41,9 @@
         rel="stylesheet">
     <link rel="icon" href="assets/favicon.png" type="image/png">
 
+    <!-- Preload Hero Image -->
+    <link rel="preload" as="image" href="assets/hero-full.webp">
+
     <!-- Critical CSS Inlined for <500ms Render -->
     <style>
         :root {
@@ -224,8 +227,6 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             border: 1px solid #eef2f6;
             align-items: end;
-            max-height: 550px;
-            overflow: hidden
         }
 
         .hero-content {
@@ -340,15 +341,11 @@
 
         .hero-man-img {
             width: auto;
-            max-width: 130%;
+            max-width: 100%;
             height: auto;
-            max-height: 580px;
             object-fit: contain;
-            object-position: bottom right;
             display: block;
-            position: absolute;
-            bottom: -70px;
-            right: -20px
+            margin-top: auto;
         }
 
         @media (max-width:992px) {
@@ -420,7 +417,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -507,10 +504,9 @@
                     <div class="hero-image">
 
                         <picture>
-                            <source srcset="assets/hero-man.webp" type="image/webp">
-                            <source srcset="assets/hero-man.png" type="image/png">
-                            <img src="assets/hero-man.webp" alt="niogod™ Engineering" class="hero-man-img" width="800"
-                                height="auto">
+                            <source srcset="assets/hero-full.webp" type="image/webp">
+                            <img src="assets/hero-full.png" alt="niogod™ Engineering" class="hero-man-img" width="800"
+                                height="auto" fetchpriority="high">
                         </picture>
                     </div>
                 </div>

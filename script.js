@@ -3,13 +3,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Sticky Header
     const header = document.querySelector('.header');
+    let ticking = false;
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
-            header.style.background = 'rgba(255, 255, 255, 0.98)';
-        } else {
-            header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                } else {
+                    header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                }
+                ticking = false;
+            });
+            ticking = true;
         }
     });
 

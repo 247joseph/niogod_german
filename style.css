@@ -2403,3 +2403,51 @@ h6 {
     font-weight: 600;
     margin-top: 10px;
 }
+/* --- SVG Icon Replacements (Optimized for Mobile) --- */
+.feature-icon svg,
+.icon-header svg {
+    width: 40px;
+    height: 40px;
+    stroke-width: 1.5;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.feature-icon svg {
+    stroke: var(--primary-color);
+}
+
+.icon-header svg {
+    stroke: var(--text-accent);
+}
+
+/* Hover effects for icons */
+.bento-card:hover .icon-header svg,
+.feature-card:hover .feature-icon svg {
+    transform: scale(1.1);
+    stroke: var(--primary-color);
+}
+
+/* Compliance Badge SVG */
+.compliance-badge svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2;
+    stroke: currentColor;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.compliance-badge span {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .feature-icon svg,
+    .icon-header svg {
+        width: 32px;
+        height: 32px;
+    }
+}

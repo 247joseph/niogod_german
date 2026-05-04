@@ -2,20 +2,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // FAQs, Mobile Menu, and Sticky Header logic
 
     // 1. Sticky Header
+    // 1. Sticky Header (Optimized with requestAnimationFrame)
     const header = document.querySelector('.header');
+    let lastKnownScrollPosition = 0;
     let ticking = false;
+
     window.addEventListener('scroll', () => {
+        lastKnownScrollPosition = window.scrollY;
+
         if (!ticking) {
             window.requestAnimationFrame(() => {
-                if (window.scrollY > 50) {
+                if (lastKnownScrollPosition > 50) {
                     header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
                     header.style.background = 'rgba(255, 255, 255, 0.98)';
                 } else {
-                    header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
-                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                    header.style.boxShadow = '0 1px 0 rgba(0,0,0,0.05)'; // Reset to original subtle border
+                    header.style.background = '#fff'; // Reset to original solid white
                 }
                 ticking = false;
             });
+
             ticking = true;
         }
     });
@@ -243,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (playPromise !== undefined) {
             playPromise.then(_ => {
                 // Autoplay started!
-                // If browser allowed unmuted, great. If browser forced mute, video.muted will be true? 
+                // If browser allowed unmuted, great. If browser forced mute, video.muted will be true?
                 // Actually, if we set video.muted=false above, and browser blocks unmuted play, the promise usually REJECTS.
                 // It doesn't silently switch to muted.
                 updateIcons();

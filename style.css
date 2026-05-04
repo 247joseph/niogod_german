@@ -39,6 +39,43 @@
     --radius-lg: 20px;
 }
 
+/* --- Custom Icons --- */
+.custom-icon {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.custom-icon-sm {
+    width: 18px;
+    height: 18px;
+}
+
+.custom-icon-lg {
+    width: 48px;
+    height: 48px;
+    stroke-width: 1.5;
+}
+
+/* Specific Overrides */
+.bento-card .icon-header .custom-icon {
+    width: 40px;
+    height: 40px;
+    stroke: var(--primary-color);
+}
+
+.feature-icon .custom-icon {
+    width: 48px;
+    height: 48px;
+    stroke: var(--primary-color);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -1658,8 +1695,8 @@ ul {
     top: 10px;
     left: 10px;
     /* Left side for close, usually convenient if controls are right */
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     background: rgba(0, 0, 0, 0.6);
     border: none;
     border-radius: 50%;
@@ -1685,8 +1722,8 @@ ul {
     background: rgba(0, 0, 0, 0.6);
     border: none;
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2403,51 +2440,51 @@ h6 {
     font-weight: 600;
     margin-top: 10px;
 }
-/* --- SVG Icon Replacements (Optimized for Mobile) --- */
-.feature-icon svg,
-.icon-header svg {
-    width: 40px;
-    height: 40px;
-    stroke-width: 1.5;
-    flex-shrink: 0;
-    transition: transform 0.3s ease;
+/* =========================================
+   Mobile Icon Optimization
+   ========================================= */
+
+@media (max-width: 992px) {
+    /* Slightly smaller icons for tablets */
+    .feature-icon .custom-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .bento-card .icon-header .custom-icon {
+        width: 36px;
+        height: 36px;
+    }
 }
 
-.feature-icon svg {
-    stroke: var(--primary-color);
-}
+@media (max-width: 480px) {
+    /* Optimized sizes for mobile screens */
+    .custom-icon-lg {
+        width: 40px;
+        height: 40px;
+    }
 
-.icon-header svg {
-    stroke: var(--text-accent);
-}
+    .feature-icon .custom-icon {
+        width: 36px;
+        height: 36px;
+        stroke-width: 1.5; /* Lighter stroke for smaller size */
+    }
 
-/* Hover effects for icons */
-.bento-card:hover .icon-header svg,
-.feature-card:hover .feature-icon svg {
-    transform: scale(1.1);
-    stroke: var(--primary-color);
-}
-
-/* Compliance Badge SVG */
-.compliance-badge svg {
-    width: 16px;
-    height: 16px;
-    stroke-width: 2;
-    stroke: currentColor;
-    vertical-align: middle;
-    margin-right: 4px;
-}
-
-.compliance-badge span {
-    display: inline-flex;
-    align-items: center;
-}
-
-/* Mobile Optimizations */
-@media (max-width: 768px) {
-    .feature-icon svg,
-    .icon-header svg {
+    .bento-card .icon-header .custom-icon {
         width: 32px;
         height: 32px;
+        stroke-width: 1.5;
+    }
+
+    .section-title svg.custom-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* Ensure inline icons in lists don't break flow */
+    li .custom-icon-sm {
+        width: 16px;
+        height: 16px;
+        margin-top: -2px; /* Fine-tune vertical alignment */
     }
 }
